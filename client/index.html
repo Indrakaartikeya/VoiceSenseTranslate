@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist/public" }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}npm install -D tsx@latestnpm install -D esbuild@latestrm -r node_modules package-lock.json; npm install<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />

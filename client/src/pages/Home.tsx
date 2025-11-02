@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 import Header from "@/components/Header";
 import RecordButton from "@/components/RecordButton";
 import WaveformVisualizer from "@/components/WaveformVisualizer";
@@ -11,14 +12,10 @@ import { Button } from "@/components/ui/button";
 import { Upload, History, FileAudio } from "lucide-react";
 
 export default function Home() {
+  const { user } = useAuth();
   const [isRecording, setIsRecording] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [showResults, setShowResults] = useState(false);
-
-  const mockUser = {
-    name: "Sarah Chen",
-    email: "sarah.chen@example.com",
-  };
 
   const mockTranscription =
     "Welcome to NoteSense AI, the intelligent voice processing application. This demo showcases our speech-to-text capabilities powered by OpenAI's Whisper API. You can record your voice, upload audio files, and get instant transcriptions with AI-powered summaries and translations in multiple languages.";
@@ -64,9 +61,20 @@ export default function Home() {
     }
   };
 
+  const displayUser = user
+    ? {
+        name: [user.firstName, user.lastName].filter(Boolean).join(" ") || "User",
+        email: user.email || "",
+        avatar: user.profileImageUrl || undefined,
+      }
+    : undefined;
+
   return (
     <div className="min-h-screen bg-background">
-      <Header user={mockUser} onLogout={() => console.log("Logout")} />
+      <Header
+        user={displayUser}
+        onLogout={() => (window.location.href = "/api/logout")}
+      />
 
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         <section className="flex flex-col items-center justify-center min-h-[50vh] gap-8 mb-12">

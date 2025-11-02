@@ -18,9 +18,10 @@ interface HeaderProps {
     avatar?: string;
   };
   onLogout?: () => void;
+  showAuth?: boolean;
 }
 
-export default function Header({ user, onLogout }: HeaderProps) {
+export default function Header({ user, onLogout, showAuth = true }: HeaderProps) {
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -87,11 +88,15 @@ export default function Header({ user, onLogout }: HeaderProps) {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          ) : (
-            <Button variant="default" data-testid="button-login">
+          ) : showAuth ? (
+            <Button
+              variant="default"
+              onClick={() => (window.location.href = "/api/login")}
+              data-testid="button-login"
+            >
               Sign In
             </Button>
-          )}
+          ) : null}
         </div>
       </div>
     </header>

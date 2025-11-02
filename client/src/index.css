@@ -19,12 +19,18 @@
   --foreground: 210 6% 12%;
 
   --border: 210 6% 88%;
+  --input: 210 6% 88%;
+  --ring: 215 20% 65%;
+  --radius: 0.5rem;
 
   --card: 210 5% 96%;
-
   --card-foreground: 210 6% 12%;
-
-  --card-border: 210 6% 90%;
+  
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
 
   --sidebar: 210 5% 94%;
 

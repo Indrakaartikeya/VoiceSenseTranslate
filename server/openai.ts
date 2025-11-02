@@ -1,8 +1,9 @@
 import OpenAI from "openai";
 import fs from "fs";
 
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "sk-..._P8A";
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: OPENAI_API_KEY,
 });
 
 export async function transcribeAudio(audioPath: string): Promise<string> {

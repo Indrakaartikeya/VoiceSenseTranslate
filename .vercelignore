@@ -1,5 +1,3 @@
-node_modules
-.git
-server
-dist
-uploads
+*
+!client/**
+!vercel.json

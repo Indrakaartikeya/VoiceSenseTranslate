@@ -4,10 +4,17 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  root: __dirname,
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+        }
+      }
+    }
   },
   resolve: {
     alias: {

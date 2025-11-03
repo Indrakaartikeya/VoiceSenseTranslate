@@ -1,8 +1,8 @@
 import { existsSync, readFileSync } from 'fs';
-import { resolve } from 'path';
+import { resolve, join } from 'path';
 
 const distDir = resolve('./dist');
-const indexPath = resolve(distDir, 'index.html');
+const indexPath = join(distDir, 'index.html');
 
 // Check if dist directory exists
 if (!existsSync(distDir)) {
@@ -19,7 +19,7 @@ if (!existsSync(indexPath)) {
 // Read index.html and check for source references
 const indexContent = readFileSync(indexPath, 'utf-8');
 if (indexContent.includes('src="/src/main.tsx"')) {
-  console.error('Error: index.html still contains development source references!');
+  console.error('Error: index.html still references source files instead of built assets!');
   process.exit(1);
 }
 

@@ -65,7 +65,7 @@ export async function setupVite(app: Express, server: Server) {
       next(e);
     }
   });
-
+}
 
 export function serveStatic(app: Express) {
   // The client build outputs into `dist/public` at the repo root.

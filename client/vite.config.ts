@@ -21,5 +21,11 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
       '@shared': path.resolve(__dirname, '../shared')
     }
+  },
+  server: {
+    fs: {
+      strict: true,
+      deny: ["**/.*"],
+    },
   }
 });

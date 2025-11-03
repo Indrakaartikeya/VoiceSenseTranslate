@@ -282,17 +282,12 @@
     pointer-events: none;
   }
 
-  /* .no-default-hover-elevate/no-default-active-elevate are empty utility classes that act
-   * as markers to disable default hover/active elevation effects. They are intentionally
-   * empty as they are used in selectors like :not(.no-default-hover-elevate) to allow
-   * components to opt-out of the default elevation behavior. */
-  .no-default-hover-elevate {
-    /* Empty by design - used as a marker class */
-  }
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {}
 
-  .no-default-active-elevate {
-    /* Empty by design - used as a marker class */
-  }
+  .no-default-active-elevate {}
 
 
   /**

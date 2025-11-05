@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE */
 :root {
+ 
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
 
@@ -119,6 +119,21 @@
 
   /* Fallback for older browsers */
   --destructive-border: hsl(var(--destructive));
+
+}
+
+/* If the browser supports color-mix(), prefer a subtle mixed color for borders */
+@supports (color-mix(in srgb, black 10%, white 0%)) {
+  :root {
+    --sidebar-primary-border: color-mix(in srgb, hsl(var(--sidebar-primary) / 1), black 8%);
+    --sidebar-accent-border: color-mix(in srgb, hsl(var(--sidebar-accent) / 1), black 6%);
+    --primary-border: color-mix(in srgb, hsl(var(--primary) / 1), black 6%);
+    --secondary-border: color-mix(in srgb, hsl(var(--secondary) / 1), black 4%);
+    --muted-border: color-mix(in srgb, hsl(var(--muted) / 1), black 6%);
+    --accent-border: color-mix(in srgb, hsl(var(--accent) / 1), black 6%);
+    --destructive-border: color-mix(in srgb, hsl(var(--destructive) / 1), black 8%);
+  }
+}
 }
 
 .dark {
@@ -204,46 +219,31 @@
 
   /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --destructive-border: hsl(var(--destructive));
-}
-
-@supports (color-mix(in srgb, black 10%, white 0%)) {
-  :root {
-    --sidebar-primary-border: color-mix(in srgb, hsl(var(--sidebar-primary) / 1), black 8%);
-    --sidebar-accent-border: color-mix(in srgb, hsl(var(--sidebar-accent) / 1), black 6%);
-    --primary-border: color-mix(in srgb, hsl(var(--primary) / 1), black 6%);
-    --secondary-border: color-mix(in srgb, hsl(var(--secondary) / 1), black 4%);
-    --muted-border: color-mix(in srgb, hsl(var(--muted) / 1), black 6%);
-    --accent-border: color-mix(in srgb, hsl(var(--accent) / 1), black 6%);
-    --destructive-border: color-mix(in srgb, hsl(var(--destructive) / 1), black 8%);
-  }
-
-  .dark {
-    --sidebar-primary-border: color-mix(in srgb, hsl(var(--sidebar-primary) / 1), white 8%);
-    --sidebar-accent-border: color-mix(in srgb, hsl(var(--sidebar-accent) / 1), white 6%);
-    --primary-border: color-mix(in srgb, hsl(var(--primary) / 1), white 6%);
-    --secondary-border: color-mix(in srgb, hsl(var(--secondary) / 1), white 4%);
-    --muted-border: color-mix(in srgb, hsl(var(--muted) / 1), white 6%);
-    --accent-border: color-mix(in srgb, hsl(var(--accent) / 1), white 6%);
-    --destructive-border: color-mix(in srgb, hsl(var(--destructive) / 1), white 8%);
-  }
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
 @layer base {

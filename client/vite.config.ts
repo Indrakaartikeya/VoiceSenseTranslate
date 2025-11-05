@@ -3,30 +3,16 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
+  base: './', // ✅ fixes asset paths on Vercel
   plugins: [react()],
-  base: './', // ✅ ensures correct asset paths in Vercel build
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-        },
-      },
-    },
+    sourcemap: true
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@shared': path.resolve(__dirname, '../shared'),
-    },
-  },
-  server: {
-    fs: {
-      strict: true,
-      deny: ['**/.*'],
-    },
-  },
+      '@': path.resolve(__dirname, 'src')
+    }
+  }
 })
